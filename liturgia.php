@@ -204,8 +204,8 @@ $couleur=$r[0]->couleur;
   $GLOBALS['date_ts']=$date_ts;
   $GLOBALS['lang']=$lang;
 }
-print"<link rel=\"stylesheet\" type=\"text/css\" href=\"".get_bloginfo('wpurl')."/wp-content/plugins/liturgia/style/liturgia.css\" />\r\n";
-print"<link rel=\"stylesheet\" type=\"text/css\" href=\"".get_bloginfo('wpurl')."/wp-content/plugins/liturgia/style/liturgie-".$couleur.".css\" />\r\n";
+print"<link rel=\"stylesheet\" type=\"text/css\" href=\"".get_bloginfo('wpurl')."/wp-content/plugins/wpliturgia/style/liturgia.css\" />\r\n";
+print"<link rel=\"stylesheet\" type=\"text/css\" href=\"".get_bloginfo('wpurl')."/wp-content/plugins/wpliturgia/style/liturgie-".$couleur.".css\" />\r\n";
 
 
 print" <script>

@@ -827,7 +827,7 @@ $i=0;
 //print_r($temporal);
 
 //print_r($temporal);
-
+/*
 $row = 1;
 //print "<br> baseurl = $baseurl";
 //if (get_titre()=="chant-gregorien") $handle = fopen("wp-content/plugins/liturgia/sources/sanctoral.csv", "r","1");
@@ -849,116 +849,7 @@ while (($data = @fgetcsv($handle, 1000, ";")) !== FALSE) {
     	$sanctoral['priorite'][$dds]=$data[7];
 		}
 }
-/*
-if($ordo=="RE") {
-$handle = fopen("wp-content/plugins/liturgia/sanctoral_EU.csv", "r","1");
-//print"<table>";
-while (($data = @fgetcsv($handle, 1000, ";")) !== FALSE) {
-//print"<tr>";
-    $num = count($data);
-    //echo "<p> $num fields in line $row: <br /></p>\n";
-    $row++;
-    if($data[4]!="") {
-    	$date_sanctoral=@mktime(12,0,0,$data[0],$data[3],$m);
-    	$dds=date("Ymd", $date_sanctoral);
-    	//$sanctoral['vita'][$dds]=$data[8];
-    	$sanctoral['intitule'][$dds]=$data[4];
-    	$sanctoral['rang'][$dds]=$data[5];
-    	$sanctoral['couleur'][$dds]=$data[6];
-    	$sanctoral['priorite'][$dds]=$data[7];
-		}
-	}
-$handle = fopen("wp-content/plugins/liturgia/sanctoral_france.csv", "r","1");
-//print"<table>";
-while (($data = @fgetcsv($handle, 1000, ";")) !== FALSE) {
-//print"<tr>";
-    $num = count($data);
-    //echo "<p> $num fields in line $row: <br /></p>\n";
-    $row++;
-    if($data[4]!="") {
-    	$date_sanctoral=@mktime(12,0,0,$data[0],$data[3],$m);
-    	$dds=date("Ymd", $date_sanctoral);
-    	//$sanctoral['vita'][$dds]=$data[8];
-    	$sanctoral['intitule'][$dds]=$data[4];
-    	$sanctoral['rang'][$dds]=$data[5];
-    	$sanctoral['couleur'][$dds]=$data[6];
-    	$sanctoral['priorite'][$dds]=$data[7];
-		}
-	}
-$handle = fopen("wp-content/plugins/liturgia/sanctoral_SE.csv", "r","1");
-//print"<table>";
-while (($data = @fgetcsv($handle, 1000, ";")) !== FALSE) {
-//print"<tr>";
-    $num = count($data);
-    //echo "<p> $num fields in line $row: <br /></p>\n";
-    $row++;
-    if($data[4]!="") {
-    	$date_sanctoral=@mktime(12,0,0,$data[0],$data[3],$m);
-    	$dds=date("Ymd", $date_sanctoral);
-    	//$sanctoral['vita'][$dds]=$data[8];
-    	$sanctoral['intitule'][$dds]=$data[4];
-    	$sanctoral['rang'][$dds]=$data[5];
-    	$sanctoral['couleur'][$dds]=$data[6];
-    	$sanctoral['priorite'][$dds]=$data[7];
-		}
-	}
-}
-*/
-/*
-$sql="select * from jos_comliturgiahorarum_subscribers where email='$my->email'";
-$r_subscr=@mysql_query($sql);
-$o_subscr=@mysql_fetch_object($r_subscr);
-//$sanctoral_france=1;
 
-if($o_subscr->France==1) {
-/// Propre spécifique
-
-$row = 1;
-$handle = fopen("calendrier/sanctoral_europe.csv", "r","1");
-//print"<table>";
-while (($data = @fgetcsv($handle, 1000, ";")) !== FALSE) {
-//print"<tr>";
-    $num = count($data);
-    //echo "<p> $num fields in line $row: <br /></p>\n";
-    $row++;
-    
-
-    if($data[4]!="") {
-    	$date_sanctoral=@mktime(12,0,0,$data[0],$data[3],$m);
-    	$dds=date("Ymd", $date_sanctoral);
-    	$sanctoral['vita'][$dds]=$data[8];
-    	$sanctoral['intitule'][$dds]=$data[4];
-    	$sanctoral['rang'][$dds]=$data[5];
-    	$sanctoral['couleur'][$dds]=$data[6];
-    	$sanctoral['priorite'][$dds]=$data[7];
-	}
-  }
-
-
-
-
-
-$row = 1;
-$handle = fopen("calendrier/sanctoral_france.csv", "r","1");
-//print"<table>";
-while (($data = @fgetcsv($handle, 1000, ";")) !== FALSE) {
-//print"<tr>";
-    $num = count($data);
-    //echo "<p> $num fields in line $row: <br /></p>\n";
-    $row++;
-    
-
-    if($data[4]!="") {
-    	$date_sanctoral=@mktime(12,0,0,$data[0],$data[3],$m);
-    	$dds=date("Ymd", $date_sanctoral);
-    	$sanctoral['vita'][$dds]=$data[8];
-    	$sanctoral['intitule'][$dds]=$data[4];
-    	$sanctoral['rang'][$dds]=$data[5];
-    	$sanctoral['couleur'][$dds]=$data[6];
-    	$sanctoral['priorite'][$dds]=$data[7];
-		}
-  }
-}
 
 */
     	/// S. JOSEPH
@@ -1131,7 +1022,7 @@ while($date_courante <= $dernier_jour) {
 		$coul=$hexa[$couleur];
 		$couleur_template[$d]=$couleur;
 	}
-$traductions=simplexml_load_file("wp-content/plugins/liturgia/traductions.xml");
+$traductions=simplexml_load_file("wp-content/plugins/wpliturgia/traductions.xml");
 	//if ($ordo!="la") $tempus=get_traduction($tempus,$lang,$traductions);
 	$calendarium['couleur_template'][$d]=$couleur_template[$d];
 	$calendarium['sanctoral'][$d]=$sanctoral['intitule'][$d];

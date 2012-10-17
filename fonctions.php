@@ -19,28 +19,6 @@ print $bb;
 
 
 
-function connect_db() {
-/*
-$linkwp=mysql_connect("192.168.193.231", "fxp", "fxp")
-    or die("Impossible de se connecter : " . mysql_error());
-$db_selected = mysql_select_db('wordpress', $linkwp);
-if (!$db_selected) die ('Impossible de sélectionner la base de données WP : ' . mysql_error());
-  /// CONNEXION BDD MYSQL PAR DEFAUT
- /*
-  $dbdata=explode("/",$GLOBALS['db_url']);
-  $dbserver=$dbdata[2];
-  $db=explode("@",$dbserver);
-  $dbaddress=$db[1];
-  $db_=explode(":",$db[0]);
-  $dbuser=$db_[0];
-  $dbpassword=$db_[1];
-  $dbname=$dbdata[3];
-  $link = mysql_connect($dbaddress, $dbuser,$dbpassword)
-    or die("Impossible de se connecter : " . mysql_error());
-  $db=mysql_select_db($dbname); 
-  return $link;
-*/
-}
 
 function ordo($ordo,$ref,$lang) {
     
@@ -1917,7 +1895,7 @@ if (!$date) {
      $date=date("Ymd",time());
 }
 
-$traductions=simplexml_load_file(get_bloginfo('wpurl')."/wp-content/plugins/liturgia/traductions.xml");
+$traductions=simplexml_load_file(get_bloginfo('wpurl')."/wp-content/plugins/wpliturgia/traductions.xml");
 $GLOBALS['traductions']=$traductions;
 $xml=$GLOBALS['liturgia'];
 $ordo=$_GET['ordo'];
