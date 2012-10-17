@@ -1,0 +1,154 @@
+div#global {
+	font-family: georgia;
+	margin: 5px;
+	}
+div#centrage {
+	text-align: center;
+}
+div#nav {
+	text-align: center;
+	margin: 2px 6px 12px 6px;
+	font-family:georgia;
+	font_weight:1200;
+	font-size:1em;
+}
+        
+div#gauche {
+	margin-left:12px;
+	margin-right:6px;
+	margin-bottom: 4px;
+	font-family: georgia;
+	font-size:0.95em;
+	float: left;
+	width: 47%;
+    clear:both;
+	text-align:justify;
+	}
+
+div#titre-antienne-lat {
+	margin-left:12px;
+	margin-right:6px;
+	font-family: georgia;
+	font-size:0.95em;
+	float: left;
+	width: 47%;
+    clear:both;
+	color:red;
+	text-align:center;
+	font-weight:900;
+	}
+
+div#droite {
+	margin-right:12px;
+	margin-left:6px;
+	margin-bottom: 4px;
+	font-family: georgia;
+	font-size:0.95em;
+	float: right;
+	width: 47%;
+	text-align:justify;
+	
+        }
+div#titre-antienne-ver {
+	margin-right:12px;
+	margin-left:6px;
+	font-family: georgia;
+	font-size:1.0em;
+	float: right;
+	width: 47%;
+	color:red;
+	text-align:center;
+	font-weight:900;
+	}		
+
+
+div#rubrique {
+	font-family: georgia;
+	font-size: 0.8em ;
+	color: red ;
+}
+
+
+
+
+#monForm
+{
+	width: 100%;
+}
+
+#monForm p
+{
+	margin: 2px 0;
+}
+
+/* fieldset , legend */
+#monForm fieldset
+{
+	margin-bottom: 2px;
+	border: #CCC 1px solid;
+}
+
+#monForm fieldset:hover
+{
+	background-color: #FFF;
+}
+
+#monForm fieldset legend
+{
+	padding: 0 10px;
+	border-left: #CCC 1px solid;
+	border-right: #CCC 1px solid;
+	font-size: 1.0em;
+	color: #999;
+}
+
+#monForm select {
+	font-family: georgia;
+	font-size: 1.0em;
+ 	background-color: #eeeeee;
+ 	color: #000000;
+}
+
+#monForm input[type="submit"]
+{
+	border: #DDEEFF 1px solid;
+	width: 10%;
+}
+
+#monForm input[type="submit"]:hover
+{
+	background-color: #66CC33;
+	cursor: pointer;
+}
+
+#monForm input[type="reset"]
+{
+	border: #DDEEFF 1px solid;
+	width: 5%;
+}
+
+#monForm input[type="reset"]:hover
+{
+	background-color: #E6484D;
+	cursor: pointer;
+}
+menu#lang ul
+{
+	align:center;
+	font-size:1.1em;
+	display:inline;
+	list-style: none;
+}
+
+menu#lang li
+{
+	display:inline;
+	border: #CCC 2px solid;
+	background: none repeat scroll 0 0 #fff;
+	margin:1px;
+	padding:1px;
+}
+menu#edition
+{
+	display:inline;
+	}

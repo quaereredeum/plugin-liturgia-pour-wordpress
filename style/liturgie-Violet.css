@@ -1,0 +1,57 @@
+body,
+
+body.page-template-page-accueil-antenne-principale-php,
+body.page-template-page-accueil-chant-gregorien-php,
+body.page-template-page-accueil-enseignement-php,
+body.page-template-page-accueil-parole-de-dieu-php,
+body.page-template-page-accueil-louange-php,
+body.page-template-page-accueil-musique-sacree-php,
+body.page-template-page-accueil-al-raja-php,
+body.page-template-page-accueil-au-fil-du-temps-php,
+
+body.antenne-principale,
+body.chant-gregorien,
+body.enseignement,
+body.parole-de-dieu,
+body.louange,
+body.musique-sacree,
+body.al-raja,
+body.au-fil-du-temps
+{
+	background-color: #7f5279;
+}
+div.mag h5{margin: 0 0 0 0 !important; color:#FFF !important; text-align:center; font-size:0.8em; background:#53354f;line-height:20px}
+div#column-single h2 {font-size:1.3em;color: #53354f; text-align:center;}
+div#column-single h3 {font-size:1.2em;}
+div#column-single h4 {font-size:1.1em;color: #53354f;}
+strong {color:#7f5279;}
+a:link,a:visited{color:#7f5279;}
+
+.block-button,
+.block-button:visited,
+.Button {
+	background: url(images/bg-block-button.png) left bottom repeat-x #7f5279;
+	background: -moz-linear-gradient(#7f5279, #381834);
+	background: -webkit-linear-gradient(#7f5279, #381834);
+	background: linear-gradient(#7f5279, #381834);
+	border: 1px solid #381834;
+	font: 12px/16px Georgia,Serif;
+}
+
+#sblogin {
+	background: url(images/bg-block-button.png) left bottom repeat-x #7f5279;
+	background: -moz-linear-gradient(#7f5279, #381834);
+	background: -webkit-linear-gradient(#7f5279, #381834);
+	background: linear-gradient(#7f5279, #381834);
+	border: 1px solid #381834;
+	font: 12px/16px Georgia,Serif;
+}
+
+
+.block-button:hover {
+	background: url(images/bg-block-button-hover.png) left bottom repeat-x #5a014f;
+	background: -moz-linear-gradient(#5a014f, #381834);
+	background: -webkit-linear-gradient(#5a014f, #381834);
+	background: linear-gradient(#5a014f, #381834);
+	font: 12px/16px Georgia,Serif;
+}

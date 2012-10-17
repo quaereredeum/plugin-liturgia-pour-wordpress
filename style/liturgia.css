@@ -1,0 +1,175 @@
+div#global {
+	font-family: georgia;
+	margin: 5px;
+	}
+div#centrage {
+	text-align: center;
+}
+div#nav {
+	text-align: center;
+	margin: 2px 6px 12px 6px;
+	font-family:georgia;
+	font_weight:1200;
+	font-size:1.2em;
+}
+        
+.gauche {
+	clear:both;
+	margin-left:1px;
+	margin-right:1px;
+	margin-bottom: 4px;
+	font-family: georgia;
+	font-size:1.2em;
+	float: left;
+	width: 49%;
+	color:#101010;
+    text-align:justify;
+	}
+.droite {
+	margin-right:1px;
+	margin-left:1px;
+	margin-bottom: 4px;
+	font-family: georgia;
+	font-size:1.2em;
+	float: right;
+	width: 49%;
+	color:#101010;
+	text-align:justify;
+     }
+
+.titre-antienne-lat {
+	clear:both;
+	margin-left:1px;
+	margin-right:1px;
+	font-family: georgia;
+	font-size:1.2em;
+	float:left;
+	width: 49%;
+    color:red;
+	text-align:center;
+	font-weight:900;
+	
+	}
+
+
+.titre-antienne-ver {
+	margin-right:1px;
+	margin-left:1px;
+	font-family: georgia;
+	font-size:1.2em;
+	width: 49%;
+	float:right;
+	color:red;
+	text-align:center;
+	font-weight:900;
+	}		
+
+@media (max-width: 800px) {/* begin @media */
+	.titre-antienne-ver {font-size:1em;	}
+		.titre-antienne-lat {font-size:1em;	}
+	.droite {font-size:1em;	}	
+
+	.gauche {font-size:1em;	}	
+}
+/* end @media */
+
+/* end Responsive Structure */
+
+#monForm{	width: 100%;}
+
+#monForm p
+{
+	margin: 2px 0;
+}
+
+/* fieldset , legend */
+#monForm fieldset
+{
+	margin-bottom: 2px;
+	border: #CCC 1px solid;
+}
+
+#monForm fieldset:hover
+{
+	background-color: #FFF;
+}
+
+#monForm fieldset legend
+{
+	padding: 0 10px;
+	border-left: #CCC 1px solid;
+	border-right: #CCC 1px solid;
+	font-size: 1.0em;
+	color: #999;
+}
+
+#monForm select {
+	font-family: georgia;
+	font-size: 1.0em;
+ 	background-color: #eeeeee;
+ 	color: #000000;
+}
+
+#monForm input[type="submit"]
+{
+	border: #DDEEFF 1px solid;
+	width: 10%;
+}
+
+#monForm input[type="submit"]:hover
+{
+	background-color: #66CC33;
+	cursor: pointer;
+}
+
+#monForm input[type="reset"]
+{
+	border: #DDEEFF 1px solid;
+	width: 5%;
+}
+
+#monForm input[type="reset"]:hover
+{
+	background-color: #E6484D;
+	cursor: pointer;
+}
+menu#lang 
+{
+	float:right;
+	font-size:0.9em;
+	display:inline;
+	list-style: none;
+	margin: 0px 0 0 0px;
+}
+menu#lang img{display:inline;margin:1px 0px -4px 0px;}
+menu#lang span
+{
+	display:inline;
+	border: #CCC 2px solid;
+	background: none repeat scroll 0 0 #fff;
+	margin:1px;
+	padding:1px;
+}
+menu#lang span#selected {
+	background:#000;
+	color:#FFF;
+	margin:3px;
+	padding:1px;
+	}
+#modeedition{
+	padding: 0px 0;
+	margin:0px 0 0 0px;
+	vertical-align:middle;
+	}	
+.editio{
+	vertical-align:middle;
+	}
+.editio img{
+	vertical-align:middle;
+	}
+
+menu#edition{display:inline;}
+.liturgie_titre{color:red;font-weight:900;text-align:center;}
+.liturgie_sous_titre{color:red;font-weight:400;text-align:center;}
+.liturgie_italique{font-weight:400;font-style:italic;}
+.rubrique {	font-family: georgia;	font-size: 0.7em ;	color: red ;}

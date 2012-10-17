@@ -1,0 +1,61 @@
+<?php
+
+include_once ("sites/all/modules/liturgia/fonctions.php");
+
+function liturgia_install() {
+	// Create tables.
+	$link=connect_db();
+	
+	
+	$sql = file_get_contents("sites/all/modules/liturgia/chants_propres_a.sql");
+	$query=explode(";",$sql);
+	$i=0;
+	while($query[$i]) {
+	print "<br>".$query[$i];
+	$r=mysql_query($query[$i],$link) or die ("<br>erreur : ".mysql_error());
+	$i++;
+	}
+	
+	$sql = file_get_contents("sites/all/modules/liturgia/chants_propres_b.sql");
+	$query=explode(";",$sql);
+	$i=0;
+	while($query[$i]) {
+	print "<br>".$query[$i];
+	$r=mysql_query($query[$i],$link) or die ("<br>erreur : ".mysql_error());
+	$i++;
+	}
+	
+	$sql = file_get_contents("sites/all/modules/liturgia/chants_propres_c.sql");
+	$query=explode(";",$sql);
+	$i=0;
+	while($query[$i]) {
+	print "<br>".$query[$i];
+	$r=mysql_query($query[$i],$link)or die ("<br>erreur : ".mysql_error());
+	$i++;
+	}
+	
+	$sql = file_get_contents("sites/all/modules/liturgia/lectures_semaine_temporal.sql");
+	$query=explode(";",$sql);
+	$i=0;
+	while($query[$i]) {
+	$r=mysql_query($query[$i],$link)or die ("<br>erreur : ".mysql_error());
+	$i++;
+	}
+  
+  	
+}
+
+
+function liturgia_uninstall() {
+  // Remove tables.
+  $link=connect_db();
+  $r=mysql_query("DROP TABLE `chants_propres_a`",$link);
+  $r=mysql_query("DROP TABLE `chants_propres_b`",$link);
+  $r=mysql_query("DROP TABLE `chants_propres_c`",$link);
+  $r=mysql_query("lectures_semaine_temporal.sql",$link);
+  
+}
+
+
+
+?>

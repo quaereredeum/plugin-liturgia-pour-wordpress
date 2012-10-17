@@ -1,0 +1,5 @@
+; $Id$
+name = Liturgia
+description = Liturgie en latin et multilingue pour la radio espérance grégorien
+package = Radio Espérance
+core = 6.x
