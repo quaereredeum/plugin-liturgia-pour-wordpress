@@ -1570,39 +1570,7 @@ function collecte($ref,$lang) {
 }
 
 
-function connect_zenon() {
-    $dbaddress="192.168.193.1";
-    $dbuser="writer";
-    $dbpassword="writer";
-    $dbname="zenon32";
-    $link = @mysql_connect($dbaddress, $dbuser,$dbpassword)
-    or die("Impossible de se connecter : " . mysql_error());
-    $db=@mysql_select_db($dbname); 
-    return $link;
-}
 
-function titre_dans_base_zenon ($ref){
-     $link = connect_zenon();
-     //$refB=substr($ref, 0, 9);
-     $q="SELECT * FROM t_rotation t where NUM_TYPE=3 and COMMENT LIKE '$ref'";
-     //print"<br>".$q;
-     $r=mysql_query($q) or die ("Erreur : $q ".mysql_error());
-     $i=0;
-     while ($row=mysql_fetch_object($r)) {
-        
-        $q2="SELECT * FROM t_gema t where NUM_rotation=$row->NUM_ROTATION";
-        //print"<br>".$q2;
-        $r2=mysql_query($q2);
-        $rs=mysql_fetch_object($r2);  
-        $sacem[$i]=$rs;
-        $titre[$i]=$row;
-        $i++;
-     }
-     $result[titre]=$titre;
-     $result[sacem]=$sacem;
-     return $result;
-     
-}
 
 function affiche_infotitre($ref) {
     //if(!$ref) return;
@@ -1943,7 +1911,7 @@ None - ";
 print"
 <a href=\"?date=$date&edition=".$_GET['edition']."&office=vepres&lang=".$_GET['lang']."&date=".$_GET['date']."\">Vêpres</a> ";
 print"- 
-Complies 
+<a href=\"?date=$date&edition=".$_GET['edition']."&office=complies&lang=".$_GET['lang']."&date=".$_GET['date']."\">Complies</a> 
 <a href=\"?date=$dateplus&edition=".$_GET['edition']."&office=$office&lang=".$_GET['lang']."\">>></a></div>";
 
 if ($office=="Martyrologe") martyrologe($xml);  //affiche_nav($date,$office);}
@@ -1962,15 +1930,15 @@ if ($office=="sexte") {$contenu.= sexte($date,$tableau,$calendarium);  affiche_n
 if ($office=="none") {$contenu.= none($date,$tableau,$calendarium);  affiche_nav($date,$office);}
 */
 if ($office=="vepres") {$contenu.= vepres($date,$ordo); affiche_nav($date,$office);}
-/*
-if ($office=="complies") {$contenu.= complies($date,$tableau,$calendarium); affiche_nav($date,$office);}
-*/
+
+if ($office=="complies") {$contenu.= complies($date,$ordo); affiche_nav($date,$office);}
+
 //print_r($GLOBALS['intitule']);
 
 return $output;
 }
 
-function affiche_texte($ref,$lang) {
+function affiche_texte($ref,$lang="fr") {
 $option=$_GET['option'];
 
 $refL="/wp-content/plugins/liturgia/sources/".$ref.".xml";

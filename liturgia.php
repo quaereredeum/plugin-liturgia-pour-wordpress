@@ -7,7 +7,7 @@ Author: FXP
 Version: 1.0
 Author URI: http://www.societaslaudis.org
 */
-
+/*
 // Hook for adding admin menus
 add_action('admin_menu', 'liturgia_menu');
 //add_action("admin_menu", "liturgia_menu");
@@ -134,6 +134,7 @@ function admin_liturgia() {
 	<input type=\"submit\" value=\"OK\"> </form>";
 	//print "Admin liturgia";
 }
+*/
 add_action('wp_head','liturgia_head');
 //add_action('loop_start','affiche_liturgia');
 
@@ -143,7 +144,7 @@ include_once ("fonctions.php");
 //include_once ("tableau.php");
 include_once ("martyrologe.php");
 //include_once ("invitatoire.php");
-include_once ("osb_vigiles.php");
+//include_once ("osb_vigiles.php");
 //include_once ("lectures.php");
 include_once ("laudes.php");
 include_once ("messe.php");
@@ -151,7 +152,7 @@ include_once ("messe.php");
 //include_once ("sexte2.php");
 //include_once ("none2.php");
 include_once ("vepres.php");
-//include_once ("complies2.php");
+include_once ("complies.php");
 
 //include_once ("../../../wp-includes/pluggable.php");
 
