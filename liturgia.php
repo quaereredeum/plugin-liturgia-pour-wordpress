@@ -145,12 +145,12 @@ include_once ("fonctions.php");
 include_once ("martyrologe.php");
 //include_once ("invitatoire.php");
 //include_once ("osb_vigiles.php");
-//include_once ("lectures.php");
+include_once ("lectures.php");
 include_once ("laudes.php");
 include_once ("messe.php");
-//include_once ("tierce2.php");
-//include_once ("sexte2.php");
-//include_once ("none2.php");
+include_once ("tierce.php");
+include_once ("sexte.php");
+include_once ("none.php");
 include_once ("vepres.php");
 include_once ("complies.php");
 

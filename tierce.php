@@ -9,9 +9,9 @@ $prio=$xml->xpath("//ordo[@id='RE']//priorite");
 $priorite=$prio[0];
 
 //////// INTITULE
-print intitule_matin();
+print intitule();
 
-$of=$xml->xpath("//ordo[@id='RE']//office_soir/la");
+$of=$xml->xpath("//ordo[@id='RE']//office_matin/la");
 if($of[0]) $off=$of[0];
 if($off) {
 	print"<div class=\"gauche\"><center><i>".$off."</i></center></div>";
