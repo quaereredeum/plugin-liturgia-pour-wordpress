@@ -1913,7 +1913,7 @@ print"
 <a href=\"?date=$date&office=tierce&&edition=".$_GET['edition']."&lang=".$_GET['lang']."&date=".$_GET['date']."\">Tierce</a> -  
 <a href=\"?date=$date&office=messe&&edition=".$_GET['edition']."&lang=".$_GET['lang']."&date=".$_GET['date']."\">Messe</a> - 
 <a href=\"?date=$date&office=sexte&&edition=".$_GET['edition']."&lang=".$_GET['lang']."&date=".$_GET['date']."\">Sexte</a> - 
-None - ";
+<a href=\"?date=$date&office=sexte&&edition=".$_GET['edition']."&lang=".$_GET['lang']."&date=".$_GET['date']."\">None</a> - ";
 
 //if (get_bloginfo('wpurl')=="http://localhost/societaslaudis") 
 print"
@@ -1933,10 +1933,10 @@ if ($office=="laudes") {  $contenu.= laudes($date,$ordo); affiche_nav($date,$off
 if ($office=="tierce") {$contenu.= tierce($date,$ordo);  affiche_nav($date,$office);}
 
 if ($office=="messe") messe($xml,$ordo);  //affiche_nav($date,$office);}
-/*
-if ($office=="sexte") {$contenu.= sexte($date,$tableau,$calendarium);  affiche_nav($date,$office);}
-if ($office=="none") {$contenu.= none($date,$tableau,$calendarium);  affiche_nav($date,$office);}
-*/
+
+if ($office=="sexte") {$contenu.= sexte($date,$ordo);  affiche_nav($date,$office);}
+if ($office=="none") {$contenu.= none($date,$ordo);  affiche_nav($date,$office);}
+
 if ($office=="vepres") {$contenu.= vepres($date,$ordo); affiche_nav($date,$office);}
 
 if ($office=="complies") {$contenu.= complies($date,$ordo); affiche_nav($date,$office);}
