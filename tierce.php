@@ -51,11 +51,14 @@ if($prr) print psaume($prr,$lang);
 if($arr) print antienne($arr,$lang);
 // Lecon et répons bref
 $lr=$xml->xpath("ordo[@id='RE']/LB_3");
+
 $lrr=$lr[0];
+//print "<b>".$lrr."</b>";
 print lectiobrevis($lrr,$lang);
 $rr=$xml->xpath("ordo[@id='RE']/RB_6");
 $rrr=$rr[0];
-print reponsbref($rrr,$lang);
+print "<br>";print_r($rr);
+print verset($rrr,$lang);
 
 $oratio=$xml->xpath("ordo[@id='RE']/oratio_3");
 //print_r($oratio);

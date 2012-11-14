@@ -327,7 +327,7 @@ $option=$_GET['option'];
 $row = 0;
 $ref=no_accent($ref);
 $refL="/wp-content/plugins/liturgia/sources/propres/office/".$ref.".xml";
-$xml = @simplexml_load_file("http://92.243.24.163/".$refL) ; //or die ("erreur : "."wp-content/plugins/liturgia/".$ref);
+$xml = @simplexml_load_file("http://92.243.24.163".$refL) ; //or die ("erreur : "."wp-content/plugins/liturgia/".$ref);
 if((!$xml)&&($_GET['edition']=="on")) {
 	$verset="<div class=\"gauche\"><a href=\"javascript:affichage_popup('http://92.243.24.163/chant-gregorien/liturgia/?task=creation&lang=la&comment=".$refL."','affichage_popup');\">".$ref."</a></div>";
 	$verset.="<div class=\"droite\"></div>";
@@ -1472,7 +1472,7 @@ $nav.="<a href=\"?affiche=1&date=$date&office=Martyrologe&mois_courant=$mense&an
 //$nav.="<a href=\"?affiche=1&date=$date&office=osb_vigiles&mois_courant=$mense&an=$anno&lang=$lang&option=$option&task=$task\">Vigiles (OSB) </a>|";
 //$nav.="<a href=\"?affiche=1&date=$date&office=lectures&mois_courant=$mense&an=$anno&lang=$lang&option=$option&task=$task\">Lectures</a>|";
 $nav.="<a href=\"?affiche=1&date=$date&office=laudes&mois_courant=$mense&an=$anno&lang=$lang&option=$option&task=$task&edition=".$_GET['edition']."\">Laudes</a>|";
-//$nav.="<a href=\"?affiche=1&date=$date&office=tierce&mois_courant=$mense&an=$anno&lang=$lang&option=$option&task=$task\">Tierce</a>|";
+//$nav.="<a href=\"?affiche=1&date=$date&office=tierce&mois_courant=$mense&an=$anno&lang=$lang&option=$option&task=$task&edition=".$_GET['edition']."\">Tierce</a>|";
 $nav.="<a href=\"?affiche=1&date=$date&office=messe&mois_courant=$mense&an=$anno&lang=$lang&option=$option&task=$task&edition=".$_GET['edition']."\">Messe</a>|";
 //$nav.="<a href=\"?affiche=1&date=$date&office=sexte&mois_courant=$mense&an=$anno&lang=$lang&option=$option&task=$task\">Sexte</a>|";
 //$nav.="<a href=\"?affiche=1&date=$date&office=none&mois_courant=$mense&an=$anno&lang=$lang&option=$option&task=$task\">None</a>|";
@@ -1856,6 +1856,7 @@ if(!$office) $office=$_GET['office'];
 if(!$office) 	$office =$GLOBALS['office'];
 if(!$office) {
 	$GLOBALS['office']="laudes"; $office="laudes";
+	if((int)date("H",time())>=8) {$GLOBALS['office']="tierce"; $office="tierce"; };
 	if((int)date("H",time())>=9) {$GLOBALS['office']="messe"; $office="messe"; };
 	if((int)date("H",time())>=12) {$GLOBALS['office']="sexte";$office="sexte";}
 	if((int)date("H",time())>=14) {$GLOBALS['office']="none";$office="none";}
@@ -1909,9 +1910,9 @@ print"
 <a href=\"?date=$date&office=Martyrologe&edition=".$_GET['edition']."&lang=".$_GET['lang']."&date=".$_GET['date']."\">Martyrologe</a> -
 <a href=\"?date=$date&office=lectures&edition=".$_GET['edition']."&lang=".$_GET['lang']."&date=".$_GET['date']."\">Office de lecture</a> - 
 <a href=\"?date=$date&office=laudes&edition=".$_GET['edition']."&lang=".$_GET['lang']."&date=".$_GET['date']."\">Laudes</a> - 
-Tierce -  
+<a href=\"?date=$date&office=tierce&&edition=".$_GET['edition']."&lang=".$_GET['lang']."&date=".$_GET['date']."\">Tierce</a> -  
 <a href=\"?date=$date&office=messe&&edition=".$_GET['edition']."&lang=".$_GET['lang']."&date=".$_GET['date']."\">Messe</a> - 
-Sexte - 
+<a href=\"?date=$date&office=sexte&&edition=".$_GET['edition']."&lang=".$_GET['lang']."&date=".$_GET['date']."\">Sexte</a> - 
 None - ";
 
 //if (get_bloginfo('wpurl')=="http://localhost/societaslaudis") 
@@ -1928,9 +1929,9 @@ if ($office=="invitatoire") { $contenu.= invitatoire($date,$ordo); print"</table
 if ($office=="lectures") { $contenu.= lecture($date,$ordo);  affiche_nav($date,$office);}
 
 if ($office=="laudes") {  $contenu.= laudes($date,$ordo); affiche_nav($date,$office); }
-/*
-if ($office=="tierce") {$contenu.= tierce($date,$tableau,$calendarium);  affiche_nav($date,$office);}
-*/
+
+if ($office=="tierce") {$contenu.= tierce($date,$ordo);  affiche_nav($date,$office);}
+
 if ($office=="messe") messe($xml,$ordo);  //affiche_nav($date,$office);}
 /*
 if ($office=="sexte") {$contenu.= sexte($date,$tableau,$calendarium);  affiche_nav($date,$office);}
