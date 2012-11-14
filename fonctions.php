@@ -898,8 +898,15 @@ $row = 0;
 //$prefixe="http://gregorien.radio-esperance.fr/";
 $refL="/wp-content/plugins/liturgia/sources/".$ref.".xml";
 
-$xml = simplexml_load_file("http://92.243.24.163/".$refL) or die("Error: Cannot create object : $refL");
-
+$xml = @simplexml_load_file("http://92.243.24.163/".$refL); //or die("Error: Cannot create object : $refL");
+if(!$xml) {
+	//<a href="javascript:affichage_popup('?option=edit&affiche=1&task=edit&lang=la&ref=sources/ps3.xml','affichage_popup');"><b>éditer</b></a>
+	if($_GET['edition']=="on")$psaume="
+	<div class=\"gauche\"><a href=\"javascript:affichage_popup('http://92.243.24.163/chant-gregorien/liturgia/?task=creation&lang=la&comment=".$refL."','affichage_popup');\">".$ref."</a></div>
+	<div class=\"droite\"></div>
+	";
+	return $psaume;
+}
 //print"<br>OPEN : "."sources/".$ref.".csv";
 
 $psaume="
@@ -1900,7 +1907,7 @@ print"
 
 <p><div id=\"nav\"><a href=\"?date=$datemoins&office=$office&edition=".$_GET['edition']."\"><<</a> 
 <a href=\"?date=$date&office=Martyrologe&edition=".$_GET['edition']."&lang=".$_GET['lang']."&date=".$_GET['date']."\">Martyrologe</a> -
-Office de lecture - 
+<a href=\"?date=$date&office=lectures&edition=".$_GET['edition']."&lang=".$_GET['lang']."&date=".$_GET['date']."\">Office de lecture</a> - 
 <a href=\"?date=$date&office=laudes&edition=".$_GET['edition']."&lang=".$_GET['lang']."&date=".$_GET['date']."\">Laudes</a> - 
 Tierce -  
 <a href=\"?date=$date&office=messe&&edition=".$_GET['edition']."&lang=".$_GET['lang']."&date=".$_GET['date']."\">Messe</a> - 
@@ -1917,9 +1924,9 @@ print"-
 if ($office=="Martyrologe") martyrologe($xml);  //affiche_nav($date,$office);}
 if ($office=="invitatoire") { $contenu.= invitatoire($date,$ordo); print"</table>"; affiche_nav($date,$office); }
 //if ($office=="osb_vigiles") {$contenu.= osb_vigiles($date,$ordo); affiche_nav($date,$office);}
-/*
- * if ($office=="lectures") { $contenu.= lectures($date,$tableau,$calendarium,$office);  affiche_nav($date,$office);}
-*/
+
+if ($office=="lectures") { $contenu.= lecture($date,$ordo);  affiche_nav($date,$office);}
+
 if ($office=="laudes") {  $contenu.= laudes($date,$ordo); affiche_nav($date,$office); }
 /*
 if ($office=="tierce") {$contenu.= tierce($date,$tableau,$calendarium);  affiche_nav($date,$office);}
