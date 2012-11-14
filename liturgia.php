@@ -153,9 +153,6 @@ include_once ("tierce.php");
 include_once ("sexte.php");
 include_once ("none.php");
 
-//include_once ("sexte2.php");
-//include_once ("none2.php");
-
 include_once ("vepres.php");
 include_once ("complies.php");
 

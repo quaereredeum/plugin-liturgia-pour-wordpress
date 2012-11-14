@@ -409,7 +409,7 @@
 <item ref="S. Martini Turonensis, espiscopi"><la>S. Martini Turonensis, espiscopi</la><fr>St Martin de Tours, évêque</fr><en></en></item>
 <item ref="S. Gertrudis, virginis, O.N."><la>S. Gertrudis, virginis, O.N.</la><fr>Ste Gertrude, vierge, de NO</fr><en/></item>
 <item ref="S. Mechtildis, virginis, O.N."><la>S. Mechtildis, virginis, O.N.</la><fr>Ste Mechtilde, vierge, de NO</fr><en/></item>
-<item ref="S. Sabbae, abbatis"><la>S. Sabbae, abbatis	</la><fr>St Sabba, abbé</fr><en/></item>
+<item ref="S. Sabbae, abbatis"><la>S. Sabbae, abbatis</la><fr>St Sabba, abbé</fr><en/></item>
 <item ref="S. Bathildis, monialis"><la>S. Bathildis, monialis</la><fr>Ste Bathilde, moniale</fr><en/></item>
 <item ref="Lectio I"><la>Lectio I</la><fr>Ière lecture</fr><en>Ist Reading</en></item>
 <item ref="Lectio II"><la>Lectio II</la><fr>IIème lecture</fr><en>2nd Reading</en></item>
@@ -425,5 +425,8 @@
 <item ref="Ad II Vesperas"><la>Ad II Vesperas</la><fr>Aux IIes Vêpres</fr><en>At IInd Vespers</en></item>
 <item ref="Ad Laudes matutinas"><la>Ad Laudes matutinas</la><fr>Aux Laudes du matin</fr><en>At Lauds (morning prayer)</en></item>
 <item ref="Responsorium Breve"><la>Responsorium Breve</la><fr>Répons bref</fr><en>Short Responsory</en></item> 
-
+<item ref="Ad Officium lectionis"><la>Ad Officium lectionis</la><fr>A l'office de lecture</fr><en></en></item> 
+<item ref="Ad Tertiam"><la>Ad Tertiam</la><fr>A Tierce</fr><en></en></item>
+<item ref="Ad Sextam"><la>Ad Sextam</la><fr>A Sexte</fr><en></en></item>
+<item ref="Ad Nonam"><la>Ad Nonam</la><fr>A None</fr><en></en></item>
 </traductions>

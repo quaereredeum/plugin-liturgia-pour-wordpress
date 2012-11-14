@@ -1889,7 +1889,7 @@ print"Avertissement : les textes de l'office sont en cours de reconstruction. De
 
 	print"<menu class=\"editio\">
 		<span id=\"modeedition\">Mode édition : <a href=\"?date=$date&edition=$switch&office=$office&lang=".$_GET['lang']."\">
-		<img src=\"".get_bloginfo('wpurl')."/wp-content/plugins/liturgia/img/".$ed.".png\"></a></span> 
+		<img src=\"".get_bloginfo('wpurl')."/wp-content/plugins/wpliturgia/img/".$ed.".png\"></a></span> 
 		</menu>
 	<menu id=\"lang\">
 	Lingua : <span "; 
