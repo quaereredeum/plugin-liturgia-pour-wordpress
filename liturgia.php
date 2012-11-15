@@ -145,6 +145,7 @@ include_once ("fonctions.php");
 include_once ("martyrologe.php");
 //include_once ("invitatoire.php");
 //include_once ("osb_vigiles.php");
+include_once ("verification.php");
 include_once ("lectures.php");
 include_once ("laudes.php");
 include_once ("messe.php");
@@ -162,7 +163,7 @@ include_once ("complies.php");
 
 if($_GET['task']=="edit") edit_content();
 if($_GET['task']=="maj") maj_content($_POST['miseajour'],$user->ID);
-if($_GET['task']=="creation") creation_xml($_GET['comment'],$_GET['lang']);
+if($_GET['task']=="creation") creation_($_GET['comment'],$_GET['lang']);
 if($_GET['task']=="enregistreXML") enregistre_XML($_GET['comment'],$_POST['lang']);
 function affiche_liturgia()
 {

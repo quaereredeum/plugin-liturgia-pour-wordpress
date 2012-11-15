@@ -1,7 +1,7 @@
 <?php
 
 
-function nonee($date,$ordo) {
+function none($date,$ordo) {
 $lang=$_GET['lang'];
 $option=$_GET['option'];
 if($lang=="") $lang="fr";
@@ -58,12 +58,15 @@ $lrr=$lr[0];
 print lectiobrevis($lrr,$lang);
 $rr=$xml->xpath("ordo[@id='RE']/RB_9");
 $rrr=$rr[0];
-print "<br>";print_r($rr);
-print verset($rrr,$lang);
+//print "<br>";print_r($rr);
+print affiche_texte($rrr,$lang);
 
 $oratio=$xml->xpath("ordo[@id='RE']/oratio_9");
-//print_r($oratio);
-print collecte($oratio[0],$lang);
+print"
+	<div class=\"gauche\">Orémus.</div>
+	<div class=\"droite\">".get_traduction("Orémus", $lang).".</div>
+	";	
+print oratio($oratio[0],$lang);
 print affiche_texte("Benedicamus_Domino",$lang);
 }
 
