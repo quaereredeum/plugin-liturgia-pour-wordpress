@@ -51,15 +51,22 @@ if($prr) print psaume($prr,$lang);
 if($arr) print antienne($arr,$lang);
 // Lecon et répons bref
 $lr=$xml->xpath("ordo[@id='RE']/LB_3");
-$lrr=$lr[0];
-print lectiobrevis($lrr,$lang);
-$rr=$xml->xpath("ordo[@id='RE']/RB_6");
-$rrr=$rr[0];
-print reponsbref($rrr,$lang);
 
+$lrr=$lr[0];
+//print "<b>".$lrr."</b>";
+print lectiobrevis($lrr,$lang);
+$rr=$xml->xpath("ordo[@id='RE']/RB_3");
+$rrr=$rr[0];
+//print "<br>";print_r($rr);
+//print verset($rrr,$lang);
+print affiche_texte($rrr,$lang);
 $oratio=$xml->xpath("ordo[@id='RE']/oratio_3");
 //print_r($oratio);
-print collecte($oratio[0],$lang);
+print"
+	<div class=\"gauche\">Orémus.</div>
+	<div class=\"droite\">".get_traduction("Orémus", $lang).".</div>
+	";	
+print oratio($oratio[0],$lang);
 print affiche_texte("Benedicamus_Domino",$lang);
 }
 ?>

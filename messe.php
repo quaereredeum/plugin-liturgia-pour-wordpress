@@ -1,6 +1,6 @@
 <?php
  
-function affiche_messe($xml,$ordo) {
+function affiche_messe($date,$ordo) {
 //print"<br>MESSE";
 $lang=$_GET['lang'];
 if(!$lang) $lang="fr";
@@ -812,9 +812,10 @@ return $output;
 }
 
 
-function messe($xml,$ordo) {
+function messe($date,$ordo) {
 $auth=false;
-$date_ts=$GLOBALS['date_ts'];
+$xml=$GLOBALS['liturgia'];
+//$date_ts=$GLOBALS['date_ts'];
 if($GLOBALS['user']->roles[2]=="authenticated user") $auth=true;
 //if($auth) print"<br>AUTHENTIFIE";
 //print_r($tableau);
