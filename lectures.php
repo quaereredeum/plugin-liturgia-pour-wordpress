@@ -52,9 +52,9 @@ if($prr) print psaume($prr,$lang);
 if($arr) print antienne($arr,$lang);
 
 // Verset
-$vr=$xml->xpath("ordo[@id='RE']/Vers1");
+$vr=$xml->xpath("ordo[@id='RE']/LVers");
 $vrr=$vr[0];
-if($vrr) print antienne($vrr,$lang,"3");
+if($vrr) print affiche_texte($vrr,$lang);
 
 // Lecon 1
 $lr=$xml->xpath("ordo[@id='RE']/Llec1");

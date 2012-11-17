@@ -53,8 +53,11 @@ print psaume("nunc_dimittis",$lang);
 print antienne("AN_Salva_nos_Domine",$lang);
 
 $oratio=$xml->xpath("ordo[@id='RE']/comp_oratio");
-//print_r($oratio);
-print collecte($oratio[0],$lang);
+print"
+	<div class=\"gauche\">Orémus.</div>
+	<div class=\"droite\">".get_traduction("Orémus", $lang).".</div>
+	";	
+print oratio($oratio[0],$lang);
 // Noctem quietam.
 print affiche_texte("Noctem_quietam",$lang);
 // Antienne mariale

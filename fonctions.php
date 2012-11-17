@@ -1616,9 +1616,34 @@ $oratio="
 	$oratio.="
 		<div class=\"gauche\">".mp3Player($mp3)."</div>
 		<div class=\"droite\">&nbsp;</div>";
+	
+	if ((substr($la[0],-14))==" Per Dóminum.") {
+		$la[0]=str_replace(" Per Dóminum.", " Per Christum Dóminum nostrum.",$la[0]);
+		$ver[0].=get_traduction(" Per Christum Dóminum nostrum.", $lang);
+	}
+	if ((substr($la[0],-14))==" Per Christum.") {
+		$la[0]=str_replace(" Per Christum.", " Per Christum Dóminum nostrum.",$la[0]);
+		$ver[0].=get_traduction(" Per Christum Dóminum nostrum.", $lang);
+	}
+    
+	if ((substr($la[0],-11))==" Qui vivit.") {
+	    $la[0]=str_replace(" Qui tecum.", " Qui vivit et regnat in sæcula sæculórum.",$la[0]);
+	    $ver[0].=get_traduction(" Qui vivit et regnat in sæcula sæculórum.", $lang);
+	}
+	 
+	if ((substr($la[0],-11))==" Qui tecum.") {
+	    $la[0]=str_replace(" Qui tecum.", " Qui vivit et regnat in sæcula sæculórum.",$la[0]);
+	    $ver[0].=get_traduction(" Qui vivit et regnat in sæcula sæculórum.", $lang);
+	}
+
+	if ((substr($la[0],-11))==" Qui vivis.") {
+	    $la[0]=str_replace(" Qui vivis.", " Qui vivis et regnas in sæcula sæculórum.",$la[0]);
+	    $ver[0].=get_traduction(" Qui vivis et regnas in sæcula sæculórum.", $lang);
+	}
+
 	$oratio.="<div class=\"gauche\">".$la['0']."</div>";
 	$oratio.="<div class=\"droite\">".$ver['0']."</div>";
-
+	
 	return $oratio;
 
 }
@@ -1652,17 +1677,17 @@ function collecte($ref,$lang) {
 	  
 	if ((substr($la[0],-14))==" Per Dóminum.") {
 		$la[0]=str_replace(" Per Dóminum.", " Per Dóminum nostrum Iesum Christum, Fílium tuum, qui tecum vivit et regnat in unitáte Spíritus Sancti, Deus, per ómnia sæcula sæculórum.",$la[0]);
-		if ($lang=="fr") $ver[0].=" Par notre Seigneur Jésus-Christ, Ton Fils, qui vit et règne avec Toi dans l'unité du Saint-Esprit, Dieu, pour tous les siècles des siècles.";
+		$ver[0].=get_traduction(" Per Dóminum nostrum Iesum Christum, Fílium tuum, qui tecum vivit et regnat in unitáte Spíritus Sancti, Deus, per ómnia sæcula sæculórum.", $lang);
 	}
      
 	if ((substr($la[0],-11))==" Qui tecum.") {
 	    $la[0]=str_replace(" Qui tecum.", " Qui tecum vivit et regnat in unitáte Spíritus Sancti, Deus, per ómnia sæcula sæculórum.",$la[0]);
-	    if ($lang=="fr") $ver[0].=" Lui qui vit et règne avec Toi dans l'unité du Saint-Esprit, Dieu, pour tous les siècles des siècles.";
+	    $ver[0].=get_traduction(" Qui tecum vivit et regnat in unitáte Spíritus Sancti, Deus, per ómnia sæcula sæculórum.", $lang);
 	}
 
 	if ((substr($la[0],-11))==" Qui vivis.") {
 	    $la[0]=str_replace(" Qui vivis.", " Qui vivis et regnas cum Deo Patre in unitáte Spíritus Sancti, Deus, per ómnia sæcula sæculórum.",$la[0]);
-	    if ($lang=="fr") $ver[0].=" Toi qui vis et règnes avec Dieu le Père dans l'unité du Saint-Esprit, Dieu, pour tous les siècles des siècles.";
+	    $ver[0].=get_traduction(" Qui vivis et regnas cum Deo Patre in unitáte Spíritus Sancti, Deus, per ómnia sæcula sæculórum.", $lang);
 	}
 	    
 	$oraison.="<div class=\"gauche\">".$la['0']."</div>";
@@ -1670,9 +1695,6 @@ function collecte($ref,$lang) {
 
   return $oraison;
 }
-
-
-
 
 function affiche_infotitre($ref) {
     //if(!$ref) return;
