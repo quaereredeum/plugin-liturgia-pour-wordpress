@@ -52,25 +52,25 @@ if($prr) print psaume($prr,$lang);
 if($arr) print antienne($arr,$lang);
 
 // Verset
-$vr=$xml->xpath("ordo[@id='RE']/Vers1");
+$vr=$xml->xpath("ordo[@id='RE']/LVers");
 $vrr=$vr[0];
-if($vrr) print antienne($vrr,$lang,"3");
+if($vrr) print affiche_texte($vrr,$lang);
 
 // Lecon 1
-$lr=$xml->xpath("ordo[@id='RE']/L_1");
+$lr=$xml->xpath("ordo[@id='RE']/Llec1");
 $lrr=$lr[0];
-print lectio($lrr,$lang);
-$rr=$xml->xpath("ordo[@id='RE']/R_1");
+print lecture_OL($lrr,$lang,1);
+$rr=$xml->xpath("ordo[@id='RE']/Lrep1");
 $rrr=$rr[0];
-//print repons($rrr,$lang);
+print repons($rrr,$lang,1);
 
 // Lecon 2
-$lr=$xml->xpath("ordo[@id='RE']/L_2");
+$lr=$xml->xpath("ordo[@id='RE']/Llec2");
 $lrr=$lr[0];
-print lectio($lrr,$lang);
-$rr=$xml->xpath("ordo[@id='RE']/R_2");
+print lecture_OL($lrr,$lang,2);
+$rr=$xml->xpath("ordo[@id='RE']/Lrep2");
 $rrr=$rr[0];
-//print repons($rrr,$lang);
+print repons($rrr,$lang,2);
 
 $oratio=$xml->xpath("ordo[@id='RE']/oratio_laudes");
 //print_r($oratio);

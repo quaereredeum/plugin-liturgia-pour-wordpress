@@ -2185,4 +2185,35 @@
 		<fr>Prions</fr>
 		<en>Let us pray</en>
 	</item>
+	<item ref=" Per Christum Dóminum nostrum.">
+		<la> Per Christum Dóminum nostrum.</la>
+		<fr> Par le Christ notre Seigneur.</fr>
+		<en> </en>
+	</item>
+		<item ref=" Qui vivit et regnat in sæcula sæculórum.">
+		<la> Qui vivit et regnat in sæcula sæculórum.</la>
+		<fr> Qui vit et règne dans les siècles des siècles.</fr>
+		<en> </en>
+	</item>
+		<item ref=" Qui vivis et regnas in sæcula sæculórum.">
+		<la> Qui vivis et regnas in sæcula sæculórum.</la>
+		<fr> Qui vis et règnes dans les siècles des siècles.</fr>
+		<en> </en>
+	</item>
+	
+		<item ref=" Per Dóminum nostrum Iesum Christum, Fílium tuum, qui tecum vivit et regnat in unitáte Spíritus Sancti, Deus, per ómnia sæcula sæculórum.">
+		 <la> Per Dóminum nostrum Iesum Christum, Fílium tuum, qui tecum vivit et regnat in unitáte Spíritus Sancti, Deus, per ómnia sæcula sæculórum.</la>
+		 <fr> Par notre Seigneur Jésus-Christ, Ton Fils, qui vit et règne avec Toi dans l'unité du Saint-Esprit, Dieu, pour tous les siècles des siècles.</fr>
+		 </item>
+	
+	   <item ref=" Qui tecum vivit et regnat in unitáte Spíritus Sancti, Deus, per ómnia sæcula sæculórum.">
+	    <la> Qui tecum vivit et regnat in unitáte Spíritus Sancti, Deus, per ómnia sæcula sæculórum.</la>
+	     <fr>  Lui qui vit et règne avec Toi dans l'unité du Saint-Esprit, Dieu, pour tous les siècles des siècles.</fr> 
+	</item>
+
+ <item ref=" Qui vivis et regnas cum Deo Patre in unitáte Spíritus Sancti, Deus, per ómnia sæcula sæculórum.">
+	    <la> Qui vivis et regnas cum Deo Patre in unitáte Spíritus Sancti, Deus, per ómnia sæcula sæculórum.</la>
+	     <fr> Toi qui vis et règnes avec Dieu le Père dans l'unité du Saint-Esprit, Dieu, pour tous les siècles des siècles.</fr> 
+	</item>
+	
 </traductions>

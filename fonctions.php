@@ -35,7 +35,7 @@ $die=substr($jour,6,2);
 $date_ts=mktime(12,0,0,$mense,$die,$anno);
 
 //print"<br>Jour=".$jour;
-$jours_l = array("Dominica,", "Feria secunda,","Feria tertia,","Feria quarta,","Feria quinta,","Feria sexta,", "Sabatto,");
+$jours_l = array("Dominica,", "Feria secunda,","Feria tertia,","Feria quarta,","Feria quinta,","Feria sexta,", "Sabbato,");
 //print"<br> Jour de la semaine : ".$jours_l[date('w',$date_ts)];
 $date['ts']=$date_ts;
 $date['AAAAMMJJ']=$jour;
@@ -217,7 +217,7 @@ function lectiobrevis($ref,$lang) {
 
 $option=$_GET['option'];
 $ref=no_accent($ref);
-$refL="wp-content/plugins/liturgia/sources/".$ref.".xml" ;
+$refL="/wp-content/plugins/liturgia/sources/".$ref.".xml" ;
 $xml = @simplexml_load_file("http://92.243.24.163/".$refL);// or die("Error: Cannot create object : $refL");
 if((!$xml)&&($_GET['edition']=="on")) {
 	//<a href="javascript:affichage_popup('?option=edit&affiche=1&task=edit&lang=la&ref=sources/ps3.xml','affichage_popup');"><b>éditer</b></a>
@@ -230,8 +230,8 @@ if((!$xml)&&($_GET['edition']=="on")) {
 
 
 if($_GET['edition']=="on") {
-	$lectio="<div class=\"gauche\">".affiche_editeur("/".$refL,"la")."</div>
-	<div class=\"droite\">".affiche_editeur("/".$refL,$lang)."</div>";
+	$lectio="<div class=\"gauche\">".affiche_editeur($refL,"la")."</div>
+	<div class=\"droite\">".affiche_editeur($refL,$lang)."</div>";
 }
 			 	
 foreach(@$xml->children() as $ligne){
@@ -594,7 +594,7 @@ function intitule(){
 	//print $GLOBALS['hebdomada'];
 	//$date=$_GET['date'];
 	$date_ts=$GLOBALS['date_ts'];
-	$die=array("Dominica","Feria II","Feria III","Feria IV","Feria V","Feria VI","Sabatto");
+	$die=array("Dominica","Feria II","Feria III","Feria IV","Feria V","Feria VI","Sabbato");
 	$lang=$GLOBALS['lang'];
 	$xml = $GLOBALS['liturgia'];
 	$req="//ordo[@id='RE']";
@@ -637,7 +637,7 @@ function intitule_soir(){
 	//print $GLOBALS['hebdomada'];
 	//$date=$_GET['date'];
 	$date_ts=$GLOBALS['date_ts'];
-	$die=array("Dominica","Feria II","Feria III","Feria IV","Feria V","Feria VI","Sabatto");
+	$die=array("Dominica","Feria II","Feria III","Feria IV","Feria V","Feria VI","Sabbato");
 	$lang=$GLOBALS['lang'];
 	$xml = $GLOBALS['liturgia'];
 	$req="//ordo[@id='RE']";
@@ -751,7 +751,6 @@ foreach(@$xml->children() as $ligne){
 		$o=@$ligne->xpath('@id');
 		$la=@$ligne->xpath('la');
 		$ver=@$ligne->xpath($lang);
-	//	print"<br>".$o[0];
 		if($o[0]==0) {
 		$lecture_vigiles.= "
 		<div class=\"gauche\"><i>".$la[0]."</i></div>
@@ -766,6 +765,50 @@ foreach(@$xml->children() as $ligne){
 
 	return $lecture_vigiles;
 }
+
+function lecture_OL($ref,$lang,$ordre) {
+$option=$_GET['option'];
+$prefixe="http://gregorien.radio-esperance.fr/";
+$row = 0;
+$ref=no_accent($ref);
+$refL="sources/propres/office/".$ref.".xml";
+
+     $refL="/wp-content/plugins/liturgia/sources/propres/office/".$ref.".xml";
+	 //print"<br>refL = ".$refL;
+     $xml = @simplexml_load_file("http://92.243.24.163/".$refL);// or die("<br>Error: Cannot create object : <a href=\"$refL\">$refL</a>");
+	 //$ref="LEC_".no_accent($ref);
+	 
+     if(!$xml) {
+	 	$lecture_OL ="<div class=\"gauche\" style=\"font-style:oblique;\"><a href=\"javascript:affichage_popup('http://92.243.24.163/chant-gregorien/liturgia/?task=creation&lang=la&comment=".$refL."','affichage_popup');\">$ref</a></div><div class=\"droite\">&nbsp;</div>";   
+    return $lecture_OL;
+	 }
+	 
+	$lecture_OL.="
+	<div class=\"gauche\">Lectio $ordre ".affiche_editeur($refL,"la")."</div>
+	<div class=\"droite\">Lecture $ordre ".affiche_editeur($refL,$lang)."</div>
+	";
+		
+foreach(@$xml->children() as $ligne){
+		$o=@$ligne->xpath('@id');
+		$la=@$ligne->xpath('la');
+		$ver=@$ligne->xpath($lang);
+	//	print"<br>".$o[0];
+		if($o[0]==0) {
+		$lecture_OL.= "
+		<div class=\"gauche\"><i>".$la[0]."</i></div>
+		<div class=\"droite\"><i>".$ver[0]."</i></div>";
+		}
+		else	{
+		$lecture_OL.= "
+		<div class=\"gauche\">".$la[0]."</div>
+		<div class=\"droite\">".$ver[0]."</div>";
+		}
+	}
+
+	return $lecture_OL;
+}
+
+
 
 function creation_accents($texte) {
 	//print"OK";
@@ -799,6 +842,33 @@ foreach(@$xml->children() as $ligne){
 		<div class=\"droite\">".$ver[0]."</div>";
 		}	 
 	return $repons_vigiles;
+}
+
+
+
+function repons($ref,$lang,$ordre) {
+$option=$_GET['option'];
+$row = 0;
+$ref=no_accent($ref);
+$refL="sources/propres/office/".$ref.".xml";
+$xml = @simplexml_load_file("http://92.243.24.163/".$refL);// or die("<br>Error: Cannot create object : <a href=\"$refL\">$refL</a>");
+	 
+	  $repons="
+		<div class=\"gauche\" align=\"center\" ><font color=red>Responsorium $ordre</font> ".affiche_editeur($refL,'lat')."</div>
+		<div class=\"droite\" align=\"center\"><font color=red>Répons $ordre</font> ".affiche_editeur($refL,$lang)."</div>";
+    if(!$xml) {
+	 	$repons_vigiles ="<div class=\"gauche\" style=\"font-style:oblique;\"><a href=\"javascript:affichage_popup('http://92.243.24.163/chant-gregorien/liturgia/?task=creation&lang=la&comment=".$refL."','affichage_popup');\">$ref</a></div><div class=\"droite\">&nbsp;</div>";   
+    return $repons;
+	 }   
+foreach(@$xml->children() as $ligne){
+		$o=@$ligne->xpath('@id');
+		$la=@$ligne->xpath('la');
+		$ver=@$ligne->xpath($lang);
+		$repons_vigiles.= "
+		<div class=\"gauche\">".$la[0]."</div>
+		<div class=\"droite\">".$ver[0]."</div>";
+		}	 
+	return $repons;
 }
 
 
@@ -1546,9 +1616,34 @@ $oratio="
 	$oratio.="
 		<div class=\"gauche\">".mp3Player($mp3)."</div>
 		<div class=\"droite\">&nbsp;</div>";
+	
+	if ((substr($la[0],-14))==" Per Dóminum.") {
+		$la[0]=str_replace(" Per Dóminum.", " Per Christum Dóminum nostrum.",$la[0]);
+		$ver[0].=get_traduction(" Per Christum Dóminum nostrum.", $lang);
+	}
+	if ((substr($la[0],-14))==" Per Christum.") {
+		$la[0]=str_replace(" Per Christum.", " Per Christum Dóminum nostrum.",$la[0]);
+		$ver[0].=get_traduction(" Per Christum Dóminum nostrum.", $lang);
+	}
+    
+	if ((substr($la[0],-11))==" Qui vivit.") {
+	    $la[0]=str_replace(" Qui tecum.", " Qui vivit et regnat in sæcula sæculórum.",$la[0]);
+	    $ver[0].=get_traduction(" Qui vivit et regnat in sæcula sæculórum.", $lang);
+	}
+	 
+	if ((substr($la[0],-11))==" Qui tecum.") {
+	    $la[0]=str_replace(" Qui tecum.", " Qui vivit et regnat in sæcula sæculórum.",$la[0]);
+	    $ver[0].=get_traduction(" Qui vivit et regnat in sæcula sæculórum.", $lang);
+	}
+
+	if ((substr($la[0],-11))==" Qui vivis.") {
+	    $la[0]=str_replace(" Qui vivis.", " Qui vivis et regnas in sæcula sæculórum.",$la[0]);
+	    $ver[0].=get_traduction(" Qui vivis et regnas in sæcula sæculórum.", $lang);
+	}
+
 	$oratio.="<div class=\"gauche\">".$la['0']."</div>";
 	$oratio.="<div class=\"droite\">".$ver['0']."</div>";
-
+	
 	return $oratio;
 
 }
@@ -1582,17 +1677,17 @@ function collecte($ref,$lang) {
 	  
 	if ((substr($la[0],-14))==" Per Dóminum.") {
 		$la[0]=str_replace(" Per Dóminum.", " Per Dóminum nostrum Iesum Christum, Fílium tuum, qui tecum vivit et regnat in unitáte Spíritus Sancti, Deus, per ómnia sæcula sæculórum.",$la[0]);
-		if ($lang=="fr") $ver[0].=" Par notre Seigneur Jésus-Christ, Ton Fils, qui vit et règne avec Toi dans l'unité du Saint-Esprit, Dieu, pour tous les siècles des siècles.";
+		$ver[0].=get_traduction(" Per Dóminum nostrum Iesum Christum, Fílium tuum, qui tecum vivit et regnat in unitáte Spíritus Sancti, Deus, per ómnia sæcula sæculórum.", $lang);
 	}
      
 	if ((substr($la[0],-11))==" Qui tecum.") {
 	    $la[0]=str_replace(" Qui tecum.", " Qui tecum vivit et regnat in unitáte Spíritus Sancti, Deus, per ómnia sæcula sæculórum.",$la[0]);
-	    if ($lang=="fr") $ver[0].=" Lui qui vit et règne avec Toi dans l'unité du Saint-Esprit, Dieu, pour tous les siècles des siècles.";
+	    $ver[0].=get_traduction(" Qui tecum vivit et regnat in unitáte Spíritus Sancti, Deus, per ómnia sæcula sæculórum.", $lang);
 	}
 
 	if ((substr($la[0],-11))==" Qui vivis.") {
 	    $la[0]=str_replace(" Qui vivis.", " Qui vivis et regnas cum Deo Patre in unitáte Spíritus Sancti, Deus, per ómnia sæcula sæculórum.",$la[0]);
-	    if ($lang=="fr") $ver[0].=" Toi qui vis et règnes avec Dieu le Père dans l'unité du Saint-Esprit, Dieu, pour tous les siècles des siècles.";
+	    $ver[0].=get_traduction(" Qui vivis et regnas cum Deo Patre in unitáte Spíritus Sancti, Deus, per ómnia sæcula sæculórum.", $lang);
 	}
 	    
 	$oraison.="<div class=\"gauche\">".$la['0']."</div>";
@@ -1600,9 +1695,6 @@ function collecte($ref,$lang) {
 
   return $oraison;
 }
-
-
-
 
 function affiche_infotitre($ref) {
     //if(!$ref) return;
