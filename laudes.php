@@ -14,6 +14,7 @@ print"<div class=\"gauche\"><center><i>Ad Laudes matutinas</i></center></div>
 <div class=\"droite\"><center><i>".get_traduction("Ad Laudes matutinas", $lang)."</i></center></div>";
 // Initial
 print affiche_texte("initial_GHeure",$lang);
+print alleluia();
 // Hymne
 $hr=$xml->xpath("ordo[@id='RE']/HYMNUS_laudes");
 $hrr=$hr[0];

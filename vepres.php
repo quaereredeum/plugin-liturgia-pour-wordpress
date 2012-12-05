@@ -21,6 +21,7 @@ else print"<div class=\"gauche\"><center><i>Ad Vesperas</i></center></div><div c
 
 // Initial
 print affiche_texte("initial_GHeure",$lang);
+print alleluia();
 // Hymne
 $hr=$xml->xpath("ordo[@id='RE']/HYMNUS_vepres");
 $hrr=$hr[0];

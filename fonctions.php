@@ -211,7 +211,18 @@ function ordinaire_messe($ordinaire,$ref,$lang) {
 		return $ordi;
 }
 
-
+function alleluia() { // fonction pour afficher alleluia à la fin du verset d'introduction de l'office
+	$alleluia.="
+		<div class=\"gauche\"> Allelúia.</div>
+		<div class=\"droite\">".get_traduction(" Allelúia.",$lang)."</div>";
+	//print_r($GLOBALS['liturgia']->tempus);
+	$req="//ordo[@id='RE']/tempus/la";
+	$tt=$GLOBALS['liturgia']->xpath($req);
+	//print_r($tt);
+	if($tt[0]=="Tempus Quadragesimae") return null;	
+	if($tt[0]=="Tempus passionis") return null;	
+	else return $alleluia;
+}
 
 function lectiobrevis($ref,$lang) {
 

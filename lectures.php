@@ -22,6 +22,7 @@ else print"<div class=\"gauche\"><center><i>Ad Officium lectionis</i></center></
 
 // Initial
 print affiche_texte("initial_GHeure",$lang);
+print alleluia();
 // Hymne
 $hr=$xml->xpath("ordo[@id='RE']/HYMNUS_lectures");
 $hrr=$hr[0];

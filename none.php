@@ -22,6 +22,7 @@ else print"<div class=\"gauche\"><center><i>Ad Nonam</i></center></div><div clas
 
 // Initial
 print affiche_texte("initial_GHeure",$lang);
+print alleluia();
 // Hymne
 $hr=$xml->xpath("ordo[@id='RE']/HYMNUS_9");
 $hrr=$hr[0];
