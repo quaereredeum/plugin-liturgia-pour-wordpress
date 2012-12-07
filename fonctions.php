@@ -665,9 +665,12 @@ function intitule_soir(){
 	<div class=\"droite\" style=\"font-size: 1.1em;font-weight: 300;text-align:center;\">".ucfirst(get_traduction($die[date('w',$date_ts)],$lang))."</div>
 	";
 	$intitule_la=$r[0]->intitule_soir->la;
+	/*
 	if($lang=="fr") $intitule_ver=$r[0]->intitule->fr;
 	if($lang=="en") $intitule_ver=$r[0]->intitule->en;
 	if($lang=="ar") $intitule_ver=$r[0]->intitule->ar;
+	*/
+	
 	if($intitule_la!="") {
 		$int.="
 		<div class=\"gauche\" style=\"font-size: 1.1em;font-weight: 900;text-align:center;\">".$intitule_la."</div>
@@ -857,31 +860,37 @@ foreach(@$xml->children() as $ligne){
 
 
 
-function repons($ref,$lang,$ordre) {
+function repons($ref,$lang) {
 $option=$_GET['option'];
+//$prefixe="http://gregorien.radio-esperance.fr/";
 $row = 0;
 $ref=no_accent($ref);
-$refL="sources/propres/office/".$ref.".xml";
-$xml = @simplexml_load_file("http://92.243.24.163/".$refL);// or die("<br>Error: Cannot create object : <a href=\"$refL\">$refL</a>");
-	 
-	  $repons="
-		<div class=\"gauche\" align=\"center\" ><font color=red>Responsorium $ordre</font> ".affiche_editeur($refL,'lat')."</div>
-		<div class=\"droite\" align=\"center\"><font color=red>Répons $ordre</font> ".affiche_editeur($refL,$lang)."</div>";
-    if(!$xml) {
-	 	$repons_vigiles ="<div class=\"gauche\" style=\"font-style:oblique;\"><a href=\"javascript:affichage_popup('http://92.243.24.163/chant-gregorien/liturgia/?task=creation&lang=la&comment=".$refL."','affichage_popup');\">$ref</a></div><div class=\"droite\">&nbsp;</div>";   
-    return $repons;
-	 }   
-foreach(@$xml->children() as $ligne){
-		$o=@$ligne->xpath('@id');
-		$la=@$ligne->xpath('la');
-		$ver=@$ligne->xpath($lang);
-		$repons_vigiles.= "
-		<div class=\"gauche\">".$la[0]."</div>
-		<div class=\"droite\">".$ver[0]."</div>";
-		}	 
-	return $repons;
+$refL="/wp-content/plugins/liturgia/sources/propres/office/".$ref.".xml";
+$xml = @simplexml_load_file("http://92.243.24.163".$refL) ; //or die ("erreur : "."wp-content/plugins/liturgia/".$ref);
+if((!$xml)&&($_GET['edition']=="on")) {
+	$verset="<div class=\"gauche\"><a href=\"javascript:affichage_popup('http://92.243.24.163/chant-gregorien/liturgia/?task=creation&lang=la&comment=".$refL."','affichage_popup');\">".$ref."</a></div>";
+	$verset.="<div class=\"droite\"></div>";
+	return $verset;
 }
+//print"<br>OPEN : "."sources/".$ref.".csv";
+//print_r($xml);
+$la=@$xml->xpath('//ligne/la');
+$expr="//ligne/".$lang;
+$ver=@$xml->xpath($expr);
 
+$verset="
+	<div class=\"gauche\">".affiche_editeur($ref,"la")."</div>
+	<div class=\"droite\">".affiche_editeur($ref,$lang)."</div>
+	";
+	$verset.="
+		<div class=\"gauche\">".mp3Player($mp3)."</div>
+		<div class=\"droite\">&nbsp;</div>";
+	for($v=0;$la[$v];$v++) {
+		$verset.="<div class=\"gauche\">".nl2br($la[$v])."</div>";
+		$verset.="<div class=\"droite\">".nl2br($ver[$v])."</div>";
+	}
+	return $verset;
+}
 
 function evangile_vigiles($ref,$lang) {
 $prefixe="http://gregorien.radio-esperance.fr/";
@@ -1015,20 +1024,20 @@ $psaume="
 	$ver=$ligne->xpath($lang);
 //	print"<br>".$o[0];
 	if($o[0]==0) {
-	$psaume.= "<div class=\"gauche\"><b><center><font color=red>".$la[0]."</font></b></center></div><div class=\"droite\"><b><center><font color=red>".$ver[0]."</font></b></center></div>";
+	if(($la[0])!=" ") $psaume.= "<div class=\"gauche\"><b><center><font color=red>".$la[0]."</font></b></center></div><div class=\"droite\"><b><center><font color=red>".$ver[0]."</font></b></center></div>";
 	}
 	elseif 	($o[0]==1) {
-	$psaume.= "<div class=\"gauche\"><center><font color=red>".$la[0]."</font></center></div><div class=\"droite\"><center><font color=red>".$ver[0]."</font></center></div>";
+	if($la[0]!=" ") $psaume.= "<div class=\"gauche\"><center><font color=red>".$la[0]."</font></center></div><div class=\"droite\"><center><font color=red>".$ver[0]."</font></center></div>";
 	}
 	
 	elseif 	($o[0]==2) {
-	$psaume.= "<div class=\"gauche\"><center><i>".$la[0]."</i></center></div><div class=\"droite\"><center><i>".$ver[0]."</i></center></div>";
+	if($la[0]!=" ") $psaume.= "<div class=\"gauche\"><center><i>".$la[0]."</i></center></div><div class=\"droite\"><center><i>".$ver[0]."</i></center></div>";
 	}
 	
 	elseif 	($o[0]==3) {
-	$psaume.= "<div class=\"gauche\"><center><font color=red><b>".$la[0]."</b></font></div><div class=\"droite\"><center><font color=red><b>".$ver[0]."</b></font></div>";
+	if($la[0]!=" ") $psaume.= "<div class=\"gauche\"><center><font color=red><b>".$la[0]."</b></font></div><div class=\"droite\"><center><font color=red><b>".$ver[0]."</b></font></div>";
 	}
-	elseif ($la!=" ") {
+	else  {
 	$psaume.= "<div class=\"gauche\">".$la[0]."</div><div class=\"droite\">".$ver[0]."</div>";
 	}
 }
@@ -1574,7 +1583,7 @@ $nav.="<a href=\"?affiche=1&date=$demain&office=$office&mois_courant=$mense&an=$
 return $nav;
 */
 }
-
+/*
 function oraison($latin,$verna,$lang,$ref,$id) {
     
 	$oraison.="
@@ -1600,15 +1609,16 @@ function oraison($latin,$verna,$lang,$ref,$id) {
 	    
 	$oraison.="<div class=\"gauche\">".$latin."</div>";
 	$oraison.="<div class=\"droite\">$verna </div>";
-
+	
   return $oraison;
 }
+*/
 
 function oratio($ref,$lang) {
 
 $option=$_GET['option'];
 $ref=no_accent($ref);
-$refL="wp-content/plugins/liturgia/sources/propres/xml/".$ref.".xml";
+$refL="/wp-content/plugins/liturgia/sources/propres/xml/".$ref.".xml";
 $xml = @simplexml_load_file("http://92.243.24.163/".$refL); // or die("Erreur : ".$refL);
 if((!$xml)&&($_GET['edition']=="on")) {
 	if($_GET['edition']=="on")$oratio="
@@ -1662,7 +1672,7 @@ $oratio="
 function collecte($ref,$lang) {
 	if(!$lang) $lang=$GLOBALS['lang'];
 	if(!$lang) $lang="fr";
-	$refL="wp-content/plugins/liturgia/sources/propres/xml/".$ref.".xml";    
+	$refL="/wp-content/plugins/liturgia/sources/propres/xml/".$ref.".xml";    
 	$oraison.="
 	<div class=\"gauche\"><font color=red><center>Oratio ".affiche_editeur($refL,"la")."</center></font></div>";
 	 
