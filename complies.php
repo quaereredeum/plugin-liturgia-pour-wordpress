@@ -15,6 +15,7 @@ print"<div class=\"gauche\"><center><i>Ad Completorium</i></center></div><div cl
 
 // Initial
 print affiche_texte("initial_GHeure",$lang);
+print alleluia();
 
 print affiche_texte("Consciencia_discussio",$lang);
 // Hymne
